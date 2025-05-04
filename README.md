@@ -100,6 +100,90 @@ The backend for the Airbnb Clone project is designed to provide a robust and sca
 - `PUT /reviews/{review_id}/` - Update a specific review
 - `DELETE /reviews/{review_id}/` - Delete a specific review
 
+## Database Design
+
+The database for the Airbnb Clone project is designed to efficiently store and manage data related to users, properties, bookings, reviews, and payments. Below is an overview of the key entities and their relationships.
+
+### Key Entities and Fields
+
+1. **Users**
+   - `id`: Primary key, unique identifier for each user.
+   - `name`: Full name of the user.
+   - `email`: Email address, unique for each user.
+   - `password`: Encrypted password for authentication.
+   - `role`: Indicates if the user is a "Host" or a "Guest".
+
+   **Relationships**:
+   - A user can list multiple properties (Host).
+   - A user can make multiple bookings (Guest).
+
+2. **Properties**
+   - `id`: Primary key, unique identifier for each property.
+   - `user_id`: Foreign key to the user (Host) who owns the property.
+   - `title`: Name or title of the property.
+   - `location`: Address or geographical details.
+   - `price_per_night`: Cost of booking the property per night.
+
+   **Relationships**:
+   - A property belongs to a user (Host).
+   - A property can have multiple bookings.
+
+3. **Bookings**
+   - `id`: Primary key, unique identifier for each booking.
+   - `property_id`: Foreign key to the property being booked.
+   - `user_id`: Foreign key to the user (Guest) who made the booking.
+   - `start_date`: Date when the booking starts.
+   - `end_date`: Date when the booking ends.
+
+   **Relationships**:
+   - A booking belongs to a specific property.
+   - A booking is made by a specific user (Guest).
+
+4. **Reviews**
+   - `id`: Primary key, unique identifier for each review.
+   - `property_id`: Foreign key to the property being reviewed.
+   - `user_id`: Foreign key to the user (Guest) who wrote the review.
+   - `rating`: Numerical rating (e.g., 1-5 stars).
+   - `comment`: Textual feedback about the property.
+
+   **Relationships**:
+   - A review belongs to a specific property.
+   - A review is written by a specific user (Guest).
+
+5. **Payments**
+   - `id`: Primary key, unique identifier for each payment.
+   - `booking_id`: Foreign key to the booking associated with the payment.
+   - `amount`: Total amount paid.
+   - `payment_date`: Date when the payment was made.
+   - `status`: Status of the payment (e.g., "Completed", "Pending").
+
+   **Relationships**:
+   - A payment is linked to a specific booking.
+
+### Entity Relationships
+
+- A **User** can:
+  - List multiple **Properties** (as a Host).
+  - Make multiple **Bookings** (as a Guest).
+  - Write multiple **Reviews** for properties they have booked.
+
+- A **Property**:
+  - Belongs to a single **User** (Host).
+  - Can have multiple **Bookings**.
+  - Can have multiple **Reviews**.
+
+- A **Booking**:
+  - Belongs to a single **Property**.
+  - Is made by a single **User** (Guest).
+  - Has one associated **Payment**.
+
+- A **Review**:
+  - Belongs to a single **Property**.
+  - Is written by a single **User** (Guest).
+
+- A **Payment**:
+  - Is associated with a single **Booking**.
+
 ## About the Project
 The Airbnb Clone Project is a comprehensive, real-world application designed to simulate the development of a robust booking platform like Airbnb. It involves a deep dive into full-stack development, focusing on backend systems, database design, API development, and application security. This project enables learners to understand complex architectures, workflows, and collaborative team dynamics while building a scalable web application.
 
