@@ -238,10 +238,10 @@ Securing the backend APIs of the Airbnb Clone project is critical to ensure the 
 - **Maintaining Platform Integrity**: Ensures that the platform is not exploited by malicious actors, which could harm its reputation.
 - **Regulatory Compliance**: Adhering to security best practices helps meet legal requirements such as GDPR or PCI DSS for payment systems.
 
-### CI/CD Pipeline
+## CI/CD Pipeline
 Continuous Integration and Continuous Deployment (CI/CD) pipelines are essential to modern software development workflows. They automate the process of integrating code changes, testing, and deploying them, ensuring efficiency and reliability throughout development.
 
-## Why CI/CD Pipelines Are Important
+### Why CI/CD Pipelines Are Important
 - **Automation**: Reduces manual effort by automating repetitive tasks like testing and deployment.
 - **Consistency**: Maintains uniform environments across development, staging, and production.
 - **Quality**: Improves overall quality by running automated tests at every stage.
